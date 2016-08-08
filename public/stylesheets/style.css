@@ -148,12 +148,10 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 }
 .login-user {
     position: fixed;
-    bottom: 0;
+    top: 0;
     right: 0;
     padding: 5px;
     font-size: 12px;
-    border: 1px #ccc solid;
-    background-color: #fff;
 }
 .input {
     display: inline-block;

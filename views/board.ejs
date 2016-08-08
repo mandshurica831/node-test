@@ -29,6 +29,9 @@
         <button type="submit" class="submit">発言する</button>
     </form>
     <a href="/" class="btn">トップへもどる</a>
+    <% if (typeof user !== 'undefined') { %>
+        <span class="login-user"><%= user.user_name %>さんとしてログインしています</span>
+    <% } %>
 </div>
 </body>
 </html>
