@@ -37,6 +37,7 @@ module.exports.getConnection = function() {
     });
     connection.on("error", function (err) {
         console.log("SQL CONNECTION ERROR: " + err);
+        module.exports.getConnection();
     });
     module.exports = connection;
 
