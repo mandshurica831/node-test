@@ -23,13 +23,7 @@ var dbConfig = {
 var connection; //クライアントオブジェクト
 
 function handleDisconnect() {
-  
-  var dbConfig = {
-    host     : 'us-cdbr-iron-east-04.cleardb.net',
-    user     : 'b261359fb916b2',
-    password : '61ef1f35',
-    database : 'heroku_6722ee1e07d3f4d'
-  };
+
   connection = mysql.createConnection(dbConfig);
 
   connection.connect(function(err) {
@@ -42,7 +36,13 @@ function handleDisconnect() {
   connection.on('error', function(err) { //エラー受け取るコールバック
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-      handleDisconnect();    //再度接続
+      var dbConfig = {
+        host     : 'us-cdbr-iron-east-04.cleardb.net',
+        user     : 'b261359fb916b2',
+        password : '61ef1f35',
+        database : 'heroku_6722ee1e07d3f4d'
+      };
+      var connection = mysql.createConnection(dbConfig);
       module.exports = connection;
     } else {
       throw err;
