@@ -17,39 +17,23 @@ var dbConfig = {
   database : 'heroku_6722ee1e07d3f4d'
 };
 
-//var connection = mysql.createConnection(dbConfig);
+var connection = mysql.createConnection(dbConfig);
 
 
-var connection; //クライアントオブジェクト
+connection.connect(function(err) {
+  if(err) {
+    console.log('error when connecting to db:', err);
+    setTimeout(handleDisconnect, 2000);  //接続失敗時リトライ
+  }
+});
 
-function handleDisconnect() {
-
-  connection = mysql.createConnection(dbConfig);
-
-  connection.connect(function(err) {
-    if(err) {
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000);  //接続失敗時リトライ
-    }
-  });
-
-  connection.on('error', function(err) { //エラー受け取るコールバック
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-      var dbConfig = {
-        host     : 'us-cdbr-iron-east-04.cleardb.net',
-        user     : 'b261359fb916b2',
-        password : '61ef1f35',
-        database : 'heroku_6722ee1e07d3f4d'
-      };
-      var connection = mysql.createConnection(dbConfig);
-      module.exports = connection;
-    } else {
-      throw err;
-    }
-  });
-}
-
-handleDisconnect();
+connection.on('error', function(err) { //エラー受け取るコールバック
+  console.log('db error', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+    connection = mysql.createConnection(dbConfig);
+  } else {
+    throw err;
+  }
+});
 
 module.exports = connection;
