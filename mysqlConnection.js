@@ -19,4 +19,13 @@ var dbConfig = {
 
 var connection = mysql.createConnection(dbConfig);
 
+connection.on('error', function(err) { //エラー受け取るコールバック
+  console.log('db error', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+    module.exports = connection;
+  } else {
+    throw err;
+  }
+});
+
 module.exports = connection;
