@@ -23,6 +23,13 @@ var dbConfig = {
 var connection; //クライアントオブジェクト
 
 function handleDisconnect() {
+  
+  var dbConfig = {
+    host     : 'us-cdbr-iron-east-04.cleardb.net',
+    user     : 'b261359fb916b2',
+    password : '61ef1f35',
+    database : 'heroku_6722ee1e07d3f4d'
+  };
   connection = mysql.createConnection(dbConfig);
 
   connection.connect(function(err) {
