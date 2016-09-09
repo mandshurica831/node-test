@@ -38,8 +38,10 @@ module.exports.getConnection = function() {
     connection.on("error", function (err) {
         console.log("SQL CONNECTION ERROR: " + err);
     });
-    module.exports.connection = connection;
-    return module.exports.connection;
+    module.exports = connection;
+
+    return connection;
+
 }
 // Open a connection automatically at app startup.
 module.exports.getConnection();
