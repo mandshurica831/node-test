@@ -36,6 +36,7 @@ function handleDisconnect() {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
       handleDisconnect();    //再度接続
+      module.exports = connection;
     } else {
       throw err;
     }
