@@ -21,7 +21,7 @@ global.get_SQL_Connection = function() {
   connection.connect(function(err) {
     if(err) {
       console.log("SQL CONNECT ERROR >> " + err);
-      setTimeout(handleDisconnect, 2000);  //接続失敗時リトライ
+      setTimeout(get_SQL_Connection, 2000);  //接続失敗時リトライ
     } else {
       console.log("SQL CONNECT SUCCESSFUL.");
     }
