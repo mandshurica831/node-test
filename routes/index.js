@@ -6,7 +6,6 @@ var connection = require('../mysqlConnection');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var query = 'SELECT B.board_id, B.user_id, B.title, ifnull(U.user_name, \'名無し\') AS user_name, DATE_FORMAT(B.created_at, \'%Y年%m月%d日 %k時%i分%s秒\') AS created_at FROM boards B LEFT OUTER JOIN users U ON B.user_id = U.user_id ORDER BY B.created_at DESC';
-  //var query = 'SELECT *, DATE_FORMAT(created_at, \'%Y年%m月%d日 %k時%i分%s秒\') AS created_at FROM boards';
   connection.query(query, function(err, rows) {
     res.render('index', {
       title: 'はじめてのNode.js',

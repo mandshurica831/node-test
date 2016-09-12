@@ -33,6 +33,7 @@ global.get_SQL_Connection = function() {
   });
 
   //エラーのとき
+  /*
   connection.on('error', function(err) {
     console.log("SQL CONNECTION ERROR >> " + err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
@@ -43,6 +44,7 @@ global.get_SQL_Connection = function() {
         throw err;
       }
     });
+    */
   console.log('===== module =====');
   console.log(module);
   console.log('===== connection =====');
