@@ -47,6 +47,7 @@ global.get_SQL_Connection = function() {
   console.log(module);
   console.log('===== connection =====');
   console.log(connection);
+  console.log('==========');
 
   return connection;
 }
