@@ -38,6 +38,7 @@ module.exports.get_SQL_Connection = function() {
       }
     });
     
+  return connection;
 }
 
 module.exports.get_SQL_Connection();
