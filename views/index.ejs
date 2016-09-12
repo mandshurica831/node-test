@@ -3,7 +3,11 @@
   <h2>ボード一覧</h2>
 
   <ul class="main-list">
-    <% boardList.forEach(function(boardItem) { %>
+    <%
+      console.log("== index.ejs <7> ==");
+      console.log(boardList);
+      boardList.forEach(function(boardItem) {
+     %>
       <li class="main-list__item">
         <a href="/boards/<%= boardItem.board_id %>" class="board">
           <p class="board__title"><%= boardItem.title %></p>
