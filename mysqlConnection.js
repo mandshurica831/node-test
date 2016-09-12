@@ -36,11 +36,11 @@ function handleDisconnect() {
     }
   });
   module.exports = connection;
-  module.exports.getConnection();
   return connection;
 }
 
 handleDisconnect();
+module.exports.getConnection();
 
 /*
 module.exports.getConnection = function() {
