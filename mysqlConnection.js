@@ -38,7 +38,7 @@ global.get_SQL_Connection = function() {
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
         //再接続
-        global.get_SQL_Connection();
+        //global.get_SQL_Connection();
       } else {
         throw err;
       }
