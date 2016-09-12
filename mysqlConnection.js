@@ -47,3 +47,5 @@ global.get_SQL_Connection = function() {
 
   return connection;
 }
+
+  module.exports = global.get_SQL_Connection();
