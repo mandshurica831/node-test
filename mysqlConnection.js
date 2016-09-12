@@ -11,12 +11,13 @@ global.get_SQL_Connection = function() {
     database : 'chat_test_160801'
   };
   */
-  var connection = mysql.createConnection({
+  var dbData = {
     host     : 'us-cdbr-iron-east-04.cleardb.net',
     user     : 'b261359fb916b2',
     password : '61ef1f35',
     database : 'heroku_6722ee1e07d3f4d'
-  });
+  };
+  var connection = mysql.createConnection(dbData);
 
   connection.connect(function(err) {
     if(err) {
@@ -27,29 +28,15 @@ global.get_SQL_Connection = function() {
     }
   });
 
-  //接続切れたとき
-  connection.on("close", function (err) {
-    console.log("SQL CONNECTION CLOSED >> " + err);
-  });
-
   //エラーのとき
-  /*
   connection.on('error', function(err) {
     console.log("SQL CONNECTION ERROR >> " + err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
-        //再接続
-        //global.get_SQL_Connection();
+        connection = mysql.createConnection(dbData);
       } else {
-        throw err;
       }
     });
-    */
-  console.log('===== module =====');
-  console.log(module);
-  console.log('===== connection =====');
-  console.log(connection);
-  console.log('==========');
 
   return connection;
 }
