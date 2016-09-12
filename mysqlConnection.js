@@ -29,7 +29,6 @@ module.exports = {
     },
 
     query: function(query, params, callback) {
-        log.app(query + "\n[" + params + "]");
         this.connection.query(query, params, callback);
     },
 
