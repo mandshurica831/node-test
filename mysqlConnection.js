@@ -1,4 +1,5 @@
-module.exports.get_SQL_Connection = function() {
+
+global.get_SQL_Connection = function() {
 
   var mysql = require('mysql');
 
@@ -10,13 +11,12 @@ module.exports.get_SQL_Connection = function() {
     database : 'chat_test_160801'
   };
   */
-  var dbData = {
+  var connection = mysql.createConnection({
     host     : 'us-cdbr-iron-east-04.cleardb.net',
     user     : 'b261359fb916b2',
     password : '61ef1f35',
     database : 'heroku_6722ee1e07d3f4d'
-  };
-  var connection = mysql.createConnection(dbData);
+  });
 
   connection.connect(function(err) {
     if(err) {
@@ -27,18 +27,29 @@ module.exports.get_SQL_Connection = function() {
     }
   });
 
+  //接続切れたとき
+  connection.on("close", function (err) {
+    console.log("SQL CONNECTION CLOSED >> " + err);
+  });
+
   //エラーのとき
   connection.on('error', function(err) {
     console.log("SQL CONNECTION ERROR >> " + err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
-        module.exports.get_SQL_Connection();
+        //再接続
+        global.get_SQL_Connection();
       } else {
         throw err;
       }
     });
-    
+  console.log('===== module =====');
+  console.log(module);
+  console.log('===== connection =====');
+  console.log(connection);
+  console.log('==========');
+
   return connection;
 }
 
-module.exports.get_SQL_Connection();
+module.exports = global.get_SQL_Connection();
