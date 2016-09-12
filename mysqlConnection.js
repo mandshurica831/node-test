@@ -9,10 +9,10 @@ var dbConfig = {
 };
 */
 var db_config = {
-    host     : 'us-cdbr-iron-east-04.cleardb.net',
-    user     : 'b261359fb916b2',
-    password : '61ef1f35',
-    database : 'heroku_6722ee1e07d3f4d'
+  host     : 'us-cdbr-iron-east-04.cleardb.net',
+  user     : 'b261359fb916b2',
+  password : '61ef1f35',
+  database : 'heroku_6722ee1e07d3f4d'
 };
 var connection; //クライアントオブジェクト
 
@@ -35,6 +35,9 @@ function handleDisconnect() {
       throw err;
     }
   });
+  module.exports = connection;
+  module.exports.getConnection();
+  return connection;
 }
 
 handleDisconnect();
