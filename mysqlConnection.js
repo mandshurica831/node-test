@@ -1,5 +1,7 @@
 var mysql = require('mysql');
 
+var connection;
+
 global.get_SQL_Connection = function() {
 
   var connection = mysql.createConnection({
@@ -25,13 +27,12 @@ global.get_SQL_Connection = function() {
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
       console.log('=> RECONECT...');
       //再接続
-      module.exports = global.get_SQL_Connection();
+      global.get_SQL_Connection();
     } else {
       throw err;
     }
   });
 
-  return connection;
 }
 
-  module.exports = global.get_SQL_Connection();
+  module.exports = connection;
