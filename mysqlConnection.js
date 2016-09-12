@@ -4,7 +4,7 @@ var connection;
 
 global.get_SQL_Connection = function() {
 
-  var connection = mysql.createConnection({
+  connection = mysql.createConnection({
     host     : 'us-cdbr-iron-east-04.cleardb.net',
     user     : 'b261359fb916b2',
     password : '61ef1f35',
