@@ -15,7 +15,7 @@ global.get_SQL_Connection = function() {
   connection.connect(function(err) {
     if(err) {
       console.log("SQL CONNECT ERROR >> " + err);
-      setTimeout(get_SQL_Connection, 2000);  //接続失敗時リトライ
+      setTimeout(global.get_SQL_Connection, 2000);  //接続失敗時リトライ
     } else {
       console.log("SQL CONNECT SUCCESSFUL.");
     }
@@ -34,5 +34,5 @@ global.get_SQL_Connection = function() {
   });
 
 }
-
+  global.get_SQL_Connection();
   module.exports = connection;
