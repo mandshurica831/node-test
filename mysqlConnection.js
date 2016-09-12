@@ -33,8 +33,9 @@ global.get_SQL_Connection = function() {
     console.log("SQL CONNECTION ERROR >> " + err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
-        connection = mysql.createConnection(dbData);
+        global.get_SQL_Connection();
       } else {
+        throw err;
       }
     });
 
