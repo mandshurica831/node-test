@@ -39,6 +39,10 @@ global.get_SQL_Connection = function() {
       }
     });
 
+  connection.query('SHOW TABLES', function(err, rows) {
+    console.log(rows);
+  });
+
   return connection;
 }
 
