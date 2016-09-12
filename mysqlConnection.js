@@ -43,10 +43,12 @@ global.get_SQL_Connection = function() {
         throw err;
       }
     });
+  console.log('===== module =====');
   console.log(module);
+  console.log('===== connection =====');
   console.log(connection);
-  module.exports = connection;
 
+  return connection;
 }
 
-global.get_SQL_Connection();
+module.exports = global.get_SQL_Connection();
