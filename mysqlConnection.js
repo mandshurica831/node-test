@@ -43,7 +43,9 @@ global.get_SQL_Connection = function() {
         throw err;
       }
     });
-  exports = connection;
+  console.log(module);
+  console.log(connection);
+  module.exports = connection;
 
 }
 
