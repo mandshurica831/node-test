@@ -24,7 +24,6 @@ global.get_SQL_Connection = function() {
       setTimeout(handleDisconnect, 2000);  //接続失敗時リトライ
     } else {
       console.log("SQL CONNECT SUCCESSFUL.");
-      module.exports = global.get_SQL_Connection();
     }
   });
 
@@ -40,6 +39,7 @@ global.get_SQL_Connection = function() {
         console.log('=> RECONECT...');
         //再接続
         global.get_SQL_Connection();
+        module.exports = global.get_SQL_Connection();
       } else {
         throw err;
       }
