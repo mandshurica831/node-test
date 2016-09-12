@@ -1,6 +1,7 @@
-var mysql = require('mysql');
 
-module.exports.getConnection = function() {
+global.get_SQL_Connection = function() {
+
+  var mysql = require('mysql');
 
   /* ローカル用DB
   var dbConfig = {
@@ -37,7 +38,7 @@ module.exports.getConnection = function() {
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
         //再接続
-        module.exports.getConnection();
+        global.get_SQL_Connection();
       } else {
         throw err;
       }
@@ -46,4 +47,4 @@ module.exports.getConnection = function() {
 
 }
 
-module.exports.getConnection();
+global.get_SQL_Connection();
