@@ -43,7 +43,7 @@ global.get_SQL_Connection = function() {
   connection.query(query, function(err, rows) {
     console.log("========= mysqlConnection.js <44> =========");
     console.log("==> module");
-    console.log(module.exports._socket);
+    console.log(module.exports);
     console.log("====================================");
   });
   return connection;
