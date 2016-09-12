@@ -20,7 +20,7 @@ global.get_SQL_Connection = function() {
 
   connection.connect(function(err) {
     if(err) {
-      console.log("SQL CONNECT ERROR: " + err);
+      console.log("SQL CONNECT ERROR >> " + err);
       setTimeout(handleDisconnect, 2000);  //接続失敗時リトライ
     } else {
       console.log("SQL CONNECT SUCCESSFUL.");
@@ -29,12 +29,12 @@ global.get_SQL_Connection = function() {
 
   //接続切れたとき
   connection.on("close", function (err) {
-    console.log("SQL CONNECTION CLOSED: " + err);
+    console.log("SQL CONNECTION CLOSED >> " + err);
   });
 
   //エラーのとき
   connection.on('error', function(err) {
-    console.log("SQL CONNECTION ERROR: " + err);
+    console.log("SQL CONNECTION ERROR >> " + err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         console.log('=> RECONECT...');
         //再接続
@@ -43,7 +43,7 @@ global.get_SQL_Connection = function() {
         throw err;
       }
     });
-  module.exports = connection;
+  exports = connection;
 
 }
 
