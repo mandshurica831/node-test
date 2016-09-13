@@ -66,17 +66,6 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.get('/test', function(req, res){
-  res.sendFile(__dirname + '/test.html');
-
-  var connection = require('mysqlConnection');
-
-  connection.query('SHOW TABLES', function(err, rows) {
-    if(err) console.log('ERROR',err);
-    console.log('rows',rows);
-  });
-});
-
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
