@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var moment = require('moment');
-var connection = require('../mysqlConnection');
+var connection = require('app/mysql/conect');
 
 router.get('/', function(req, res, next) {
   res.render('register', {

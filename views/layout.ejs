@@ -11,6 +11,7 @@
 
   <% if (typeof user !== 'undefined') { %>
       <p class="login-user">
+      <%console.log(user)%>
         <%= user.user_name %>さんとしてログインしています
         <a href="/logout" class="btn">ログアウト</a>
       </p>

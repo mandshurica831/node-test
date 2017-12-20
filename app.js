@@ -14,7 +14,7 @@ var register = require('./routes/register');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
-var setUser = require('./setUser');
+var get_user = require('app/mysql/get_user');
 
 var app = express();
 
@@ -36,10 +36,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/', setUser, routes);
+app.use('/', get_user, routes);
 app.use('/', routes);
 app.use('/users', users);
-app.use('/boards', setUser, boards);
+app.use('/boards', boards);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
